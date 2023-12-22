@@ -33,5 +33,3 @@
     service :
      name: postgresql
      state: started
-
-
