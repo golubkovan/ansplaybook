@@ -65,8 +65,8 @@
         source: load
     - name: RunDockerContainer
       docker_container:
-        name: democontainer:v1.0
-        image: democontainer:v1.0
+        name: democontainer
+        image: democontainer
         exposed_ports:
           - 8080
         ports:
