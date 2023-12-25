@@ -19,8 +19,7 @@
       name: tomcat:9-jdk11
       build: 
         dockerfile: ./Dockerfile
-      state: present
-      source: local
+      path=/tmp/
 #  tasks: Docker
 #  docker_container:
 #    name: maven 
