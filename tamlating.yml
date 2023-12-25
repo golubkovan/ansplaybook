@@ -1,5 +1,5 @@
 ---
-- name: insatell nginx
+- name: install nginx
   hosts: all
   become: yes
 
