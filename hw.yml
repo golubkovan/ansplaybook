@@ -1,25 +1,53 @@
 ---
-- name: Build app
-  hosts: web
-
+- hosts: build_host
+  gather_facts: no
   tasks:
-  - name: Ensure python3-pip package present
-    apt:
-      name: python3-pip
-      state: present
+    - name: create build directory
+      file:
+        path: /root/demo-dockerfile
+        state: directory
+        owner: root
+        group: root
+        mode: '0755'
+    - name: copy Dockerfile
+      copy:
+        src: ./Dockerfile
+        dest: /root/demo-dockerfile/Dockerfile
+        owner: root
+        group: root
+        mode: '0644'
+    - name: build container image
+      docker_image:
+        name: democontainer:v1.0
+        build:
+          path: /root/demo-dockerfile
+          source: build
+        state: present
 
-  tasks:
-  - name: Install Docker Module for Python
-    pip:
-      name: docker
 
-  tasks:
-  - name: Build docker
-    docker_image:
-      name: tomcat:9-jdk11
-      build: 
-        dockerfile: ./Dockerfile
-      path=/tmp/
+
+#---
+#- name: Build app
+#  hosts: web
+#
+#  tasks:
+#  - name: Ensure python3-pip package present
+#    apt:
+#      name: python3-pip
+#      state: present
+#
+#  tasks:
+#  - name: Install Docker Module for Python
+#    pip:
+#      name: docker
+#
+#  tasks:
+#  - name: Build docker
+#    docker_image:
+#      name: tomcat:9-jdk11
+#      build: 
+#        dockerfile: ./Dockerfile
+#    : path: /tmp/
 #  tasks: Docker
 #  docker_container:
 #    name: maven 
