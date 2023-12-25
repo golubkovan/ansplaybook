@@ -7,11 +7,18 @@
     apt:
       name: python3-pip
       state: present
+
   tasks:
   - name: Install Docker Module for Python
     pip:
       name: docker
-      
+
+  tasks:
+  - name: Build docker
+    docker_image:
+      name: tomcat:9-jdk11
+      build: 
+        dockerfile: ./Dockerfile
 
 #  tasks: Docker
 #  docker_container:
