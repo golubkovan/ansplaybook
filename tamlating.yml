@@ -1,5 +1,5 @@
 ---
-- name: insatell nginx_status_facts:
+- name: insatell nginx
   hosts: all
   become: yes
 
