@@ -2,6 +2,11 @@
 - hosts: web
   gather_facts: no
   tasks:
+    - name: Ensure docker.io package present
+      apt:
+        name: docker.io
+        state: present
+
     - name: create build directory
       file:
         path: /root/demo-dockerfile
@@ -9,6 +14,7 @@
         owner: root
         group: root
         mode: '0755'
+
     - name: copy Dockerfile
       copy:
         src: ./Dockerfile
@@ -16,6 +22,7 @@
         owner: root
         group: root
         mode: '0644'
+        
     - name: build container image
       docker_image:
         name: democontainer:v1.0
