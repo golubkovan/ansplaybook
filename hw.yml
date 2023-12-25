@@ -38,8 +38,8 @@
         state: present
     - name: fetch archived image
         fetch:
-        src: /root/democontainer_v1_0.tar
-        dest: ./democontainer_v1_0.tar
+          src: /root/democontainer_v1_0.tar
+          dest: ./democontainer_v1_0.tar
         flat: true
 
 
