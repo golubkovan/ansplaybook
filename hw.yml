@@ -22,7 +22,7 @@
         owner: root
         group: root
         mode: '0644'
-        
+
     - name: build container image
       docker_image:
         name: democontainer:v1.0
@@ -30,7 +30,17 @@
         build:
           path: /root/demo-dockerfile
         state: present
-
+    - name: archive container image as a tarball
+      docker_image:
+        name: democontainer:v1.0
+        archive_path: /root/democontainer_v1_0.tar
+        source: pull
+        state: present
+    - name: fetch archived image
+        fetch:
+        src: /root/democontainer_v1_0.tar
+        dest: ./democontainer_v1_0.tar
+        flat: true
 
 
 #---
