@@ -63,3 +63,12 @@
         load_path: /root/democontainer_v1_0.tar
         state: present
         source: load
+    - name: RunDockerContainer
+      docker_container:
+        name: democontainer:v1.0
+        image: democontainer:v1.0
+        exposed_ports:
+          - 8080
+        ports:
+          - "8080:8080"
+        state: present
