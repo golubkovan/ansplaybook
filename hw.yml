@@ -44,31 +44,16 @@
         dest: ./democontainer_v1_0.tar
         flat: true
 
-
-#---
-#- name: Build app
-#  hosts: web
-#
-#  tasks:
-#  - name: Ensure python3-pip package present
-#    apt:
-#      name: python3-pip
-#      state: present
-#
-#  tasks:
-#  - name: Install Docker Module for Python
-#    pip:
-#      name: docker
-#
-#  tasks:
-#  - name: Build docker
-#    docker_image:
-#      name: tomcat:9-jdk11
-#      build: 
-#        dockerfile: ./Dockerfile
-#    : path: /tmp/
-#  tasks: Docker
-#  docker_container:
-#    name: maven 
-#    image: maven:3.8.8-eclipse-temurin-8-alpine
-#    command: 
+- hosts: db
+  gather_facts: no
+  tasks:
+    - name: copy tarball to host
+      copy:
+        src: ./democontainer_v1_0.tar
+        dest: /root/democontainer_v1_0.tar
+    - name: load container from tarball
+      docker_image:
+        name: democontainer:v1.0
+        load_path: /root/democontainer_v1_0.tar
+        state: present
+        source: load
