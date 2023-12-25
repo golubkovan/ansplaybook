@@ -1,0 +1,5 @@
+<html>
+    <body>
+        <h1>Hello World! I'm {{ state }} and my ip {{ ansible_all_ip4_addresess }} </h>
+    </body>
+</html>
