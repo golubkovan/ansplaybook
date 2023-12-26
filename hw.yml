@@ -38,8 +38,8 @@
 
     - name: Tag and push to docker hub
       docker_image:
-        name: pacur/centos-7:56
-        repository: dcoppenhagan/myimage:7.56
+        name: agolubkov/tomcat:1
+        repository: agolubkov/tomcat:1
         push: yes
         source: local
 	
