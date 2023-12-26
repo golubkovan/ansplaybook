@@ -25,7 +25,7 @@
 
     - name: build container image
       docker_image:
-        name: tomcat:1
+        name: tomcat1:1
         source: build
         build:
           path: /tmp/buildDoker
@@ -38,8 +38,8 @@
 
     - name: Tag and push to docker hub
       docker_image:
-        name: agolubkov/tomcat:1
-        repository: agolubkov/tomcat:1
+        name: tomcat1:1
+        repository: agolubkov/tomcat1:1
         push: yes
         source: local
 
