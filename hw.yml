@@ -42,22 +42,19 @@
         repository: agolubkov/tomcat:1
         push: yes
         source: local
-	
 
-      
-
-    - name: archive container image as a tarball
-      docker_image:
-        name: democontainer:v1.0
-        archive_path: /root/democontainer_v1_0.tar
-        source: pull
-        state: present
-
-    - name: fetch archived image
-      fetch:
-        src: /root/democontainer_v1_0.tar
-        dest: ./democontainer_v1_0.tar
-        flat: true
+#    - name: archive container image as a tarball
+#      docker_image:
+#        name: democontainer:v1.0
+#        archive_path: /root/democontainer_v1_0.tar
+#        source: pull
+#        state: present
+#
+#    - name: fetch archived image
+#      fetch:
+#        src: /root/democontainer_v1_0.tar
+#        dest: ./democontainer_v1_0.tar
+#        flat: true
 
 - hosts: db
   gather_facts: no
