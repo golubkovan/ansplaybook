@@ -76,11 +76,10 @@
 #        state: present
 #        source: load
 
-    - name: Push Docker image
+    - name: Pull Docker image
       docker_image:
-        name: tomcat1:v1
-        image: agolubkov/tomcat1:v1
-        pull:
+        name: agolubkov/tomcat1:v1
+        source: pull
 
     - name: RunDockerContainer
       docker_container:
