@@ -31,7 +31,7 @@
           path: /tmp/buildDoker
         state: present
 
-    - name: Log into DockerHub
+    - name: Login DockerHub
       docker_login:
         username: agolubkov
         password: dckr_pat_l9y81ahvdQ90YWqYCj4LZv-zLkA
