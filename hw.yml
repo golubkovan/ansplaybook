@@ -77,7 +77,7 @@
 #        source: load
 
     - name: Push Docker image
-      docker_image
+      docker_image:
         name: tomcat1:v1
         image: agolubkov/tomcat1:v1
         pull:
