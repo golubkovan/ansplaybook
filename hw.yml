@@ -25,7 +25,7 @@
 
     - name: build container image
       docker_image:
-        name: democontainer:v1.0
+        name: tomcat:1
         source: build
         build:
           path: /tmp/buildDoker
@@ -56,7 +56,7 @@
 #        dest: ./democontainer_v1_0.tar
 #        flat: true
 
-- hosts: db
+- hosts: db1
   gather_facts: no
   tasks:
     - name: Ensure docker.io package present
