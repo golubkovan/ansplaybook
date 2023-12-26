@@ -9,7 +9,7 @@
 
     - name: create build directory
       file:
-        path: /root/demo-dockerfile
+        path: /tmp/buildDoker
         state: directory
         owner: root
         group: root
@@ -18,7 +18,7 @@
     - name: copy Dockerfile
       copy:
         src: ./Dockerfile
-        dest: /root/demo-dockerfile/Dockerfile
+        dest: /tmp/buildDoker/Dockerfile
         owner: root
         group: root
         mode: '0644'
@@ -28,8 +28,23 @@
         name: democontainer:v1.0
         source: build
         build:
-          path: /root/demo-dockerfile
+          path: /tmp/buildDoker
         state: present
+
+    - name: Log into DockerHub
+      docker_login:
+        username: agolubkov
+        password: dckr_pat_l9y81ahvdQ90YWqYCj4LZv-zLkA
+
+    - name: Tag and push to docker hub
+      docker_image:
+        name: pacur/centos-7:56
+        repository: dcoppenhagan/myimage:7.56
+        push: yes
+        source: local
+	
+
+      
 
     - name: archive container image as a tarball
       docker_image:
