@@ -84,7 +84,7 @@
     - name: RunDockerContainer
       docker_container:
         name: tomcat1
-        image: agolubkov/tomcat1
+        image: agolubkov/tomcat1:v1
         exposed_ports:
           - 8080
         ports:
